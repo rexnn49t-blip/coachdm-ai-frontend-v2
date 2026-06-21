@@ -14,51 +14,75 @@ async function generateReply() {
 
   document.getElementById("resultsSection").style.display = "grid";
 
- document.getElementById("dmReply").innerText =
-"⏳ Generating AI replies...";
+  document.getElementById("dmReply").innerText =
+    "⏳ Generating AI replies...";
 
-document.getElementById("followUp").innerText =
-"⏳ Please wait...";
+  document.getElementById("followUp").innerText =
+    "⏳ Please wait...";
 
-document.getElementById("booking").innerText =
-"⏳ Please wait...";
+  document.getElementById("booking").innerText =
+    "⏳ Please wait...";
 
-document.getElementById("objection").innerText =
-"⏳ Please wait...";
+  document.getElementById("objection").innerText =
+    "⏳ Please wait...";
 
-document.getElementById("callInvite").innerText =
-"⏳ Please wait...";
+  document.getElementById("callInvite").innerText =
+    "⏳ Please wait...";
+
   try {
 
-    const response = await fetch("https://coachdm-ai.onrender.com/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message,
-        tone
-      })
-    });
+    const response = await fetch(
+      "https://coachdm-ai.onrender.com/generate",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message,
+          tone
+        })
+      }
+    );
 
     const data = await response.json();
+
     const text = data.reply;
 
-    const dm = text.match(/DM REPLY:(.*?)(FOLLOW UP:|$)/s);
-    const follow = text.match(/FOLLOW UP:(.*?)(BOOKING MESSAGE:|$)/s);
-    const booking = text.match(/BOOKING MESSAGE:(.*?)(OBJECTION HANDLING:|$)/s);
-    const objection = text.match(/OBJECTION HANDLING:(.*?)(CALL INVITATION:|$)/s);
-    const call = text.match(/CALL INVITATION:(.*)$/s);
+    const dm =
+      text.match(/DM REPLY:(.*?)(FOLLOW UP:|$)/s);
 
-    document.getElementById("dmReply").innerText = dm ? dm[1].trim() : "";
-    document.getElementById("followUp").innerText = follow ? follow[1].trim() : "";
-    document.getElementById("booking").innerText = booking ? booking[1].trim() : "";
-    document.getElementById("objection").innerText = objection ? objection[1].trim() : "";
-    document.getElementById("callInvite").innerText = call ? call[1].trim() : "";
+    const follow =
+      text.match(/FOLLOW UP:(.*?)(BOOKING MESSAGE:|$)/s);
+
+    const booking =
+      text.match(/BOOKING MESSAGE:(.*?)(OBJECTION HANDLING:|$)/s);
+
+    const objection =
+      text.match(/OBJECTION HANDLING:(.*?)(CALL INVITATION:|$)/s);
+
+    const call =
+      text.match(/CALL INVITATION:(.*)$/s);
+
+    document.getElementById("dmReply").innerText =
+      dm ? dm[1].trim() : "";
+
+    document.getElementById("followUp").innerText =
+      follow ? follow[1].trim() : "";
+
+    document.getElementById("booking").innerText =
+      booking ? booking[1].trim() : "";
+
+    document.getElementById("objection").innerText =
+      objection ? objection[1].trim() : "";
+
+    document.getElementById("callInvite").innerText =
+      call ? call[1].trim() : "";
 
   } catch (error) {
 
     console.error(error);
+
     alert("Error generating response");
 
   }
@@ -69,7 +93,26 @@ document.getElementById("callInvite").innerText =
 
 function copyCard(id, button) {
 
-  function copyAll() {
+  const text =
+    document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text);
+
+  showNotification("Copied successfully!");
+
+  if (button) {
+
+    button.innerText = "✓ Copied";
+
+    setTimeout(() => {
+      button.innerText = "Copy";
+    }, 2000);
+
+  }
+
+}
+
+function copyAll() {
 
   const text =
 `DM Reply:
@@ -89,32 +132,17 @@ ${document.getElementById("callInvite").innerText}`;
 
   navigator.clipboard.writeText(text);
 
- showNotification("All responses copied!");
-}
-  const text = document.getElementById(id).innerText;
+  showNotification("All responses copied!");
 
-  navigator.clipboard.writeText(text);
-
-  button.innerText = "✓ Copied";
-
-  setTimeout(() => {
-    button.innerText = "Copy";
-  }, 2000);
 }
 
 function fillExample(text) {
-  document.getElementById("message").value = text;
+
+  document.getElementById("message").value =
+    text;
+
 }
-const messageBox =
-document.getElementById("message");
 
-messageBox.addEventListener("input", () => {
-
-  document.getElementById("charCount")
-    .innerText =
-    messageBox.value.length + " characters";
-
-});
 function showNotification(text){
 
   const notification =
@@ -130,13 +158,42 @@ function showNotification(text){
 
   setTimeout(() => {
     notification.remove();
-  },2000);
+  }, 2000);
 
 }
-document
-.getElementById("darkToggle")
-.addEventListener("click", () => {
 
-  document.body.classList.toggle("dark");
+document.addEventListener("DOMContentLoaded", () => {
+
+  const messageBox =
+    document.getElementById("message");
+
+  const charCount =
+    document.getElementById("charCount");
+
+  if (messageBox && charCount) {
+
+    messageBox.addEventListener("input", () => {
+
+      charCount.innerText =
+        messageBox.value.length +
+        " characters";
+
+    });
+
+  }
+
+  const darkToggle =
+    document.getElementById("darkToggle");
+
+  if (darkToggle) {
+
+    darkToggle.addEventListener(
+      "click",
+      () => {
+        document.body.classList.toggle("dark");
+      }
+    );
+
+  }
 
 });
