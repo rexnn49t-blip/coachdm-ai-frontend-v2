@@ -89,8 +89,7 @@ ${document.getElementById("callInvite").innerText}`;
 
   navigator.clipboard.writeText(text);
 
-  alert("All responses copied!");
-
+ showNotification("All responses copied!");
 }
   const text = document.getElementById(id).innerText;
 
@@ -106,3 +105,38 @@ ${document.getElementById("callInvite").innerText}`;
 function fillExample(text) {
   document.getElementById("message").value = text;
 }
+const messageBox =
+document.getElementById("message");
+
+messageBox.addEventListener("input", () => {
+
+  document.getElementById("charCount")
+    .innerText =
+    messageBox.value.length + " characters";
+
+});
+function showNotification(text){
+
+  const notification =
+    document.createElement("div");
+
+  notification.className =
+    "notification";
+
+  notification.innerText =
+    text;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  },2000);
+
+}
+document
+.getElementById("darkToggle")
+.addEventListener("click", () => {
+
+  document.body.classList.toggle("dark");
+
+});

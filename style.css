@@ -197,3 +197,71 @@ transition:.3s;
 .copy-all-btn:hover{
 opacity:.9;
 }
+.char-count{
+text-align:right;
+margin-top:-15px;
+margin-bottom:20px;
+font-size:14px;
+color:#6b7280;
+}
+.notification{
+position:fixed;
+top:30px;
+right:30px;
+background:#111827;
+color:white;
+padding:15px 25px;
+border-radius:12px;
+font-weight:600;
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+z-index:999;
+animation:fadeIn .3s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.dark-btn{
+margin-top:20px;
+padding:12px 20px;
+border:none;
+background:#111827;
+color:white;
+border-radius:12px;
+cursor:pointer;
+}
+
+body.dark{
+background:#111827;
+}
+
+body.dark .main-card,
+body.dark .output-card,
+body.dark .badge{
+background:#1f2937;
+color:white;
+}
+
+body.dark h1,
+body.dark h3,
+body.dark label{
+color:white;
+}
+
+body.dark .content{
+color:#d1d5db;
+}
+
+body.dark textarea,
+body.dark select{
+background:#374151;
+color:white;
+border:none;
+}
