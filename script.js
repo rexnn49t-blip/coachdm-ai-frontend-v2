@@ -1,3 +1,4 @@
+console.log("CoachDM AI Version 2");
 async function generateReply() {
 
   const message = document.getElementById("message").value;
