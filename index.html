@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CoachDM AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+
+        <div class="badge">
+            🚀 AI-Powered Coach Assistant
+        </div>
+
+        <h1>CoachDM AI</h1>
+
+        <p>
+            Convert leads into clients with high-converting replies, follow-ups, bookings, and objection handling.
+        </p>
+
+    </div>
+
+    <div class="main-card">
+
+        <label>Lead Message</label>
+
+        <textarea id="message" placeholder="Paste your lead message here..."></textarea>
+
+        <!-- Examples -->
+        <div class="examples">
+
+            <button onclick="fillExample('I would love coaching but it is a little expensive right now.')">Price Objection</button>
+
+            <button onclick="fillExample('I am interested but very busy at the moment.')">Busy Prospect</button>
+
+            <button onclick="fillExample('I am comparing a few different coaches before deciding.')">Comparing Coaches</button>
+
+        </div>
+
+        <label>Tone</label>
+
+       <select id="tone">
+    <option>Friendly</option>
+    <option>Professional</option>
+    <option>Direct</option>
+    <option>High Ticket</option>
+    <option>Luxury</option>
+    <option>Empathetic</option>
+    <option>Challenger</option>
+    <option>Consultative</option>
+</select>
+
+       <button class="generate-btn" onclick="generateReply()">
+    Generate AI Response
+</button>
+
+<button class="copy-all-btn" onclick="copyAll()">
+    Copy All Responses
+</button>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-grid" id="resultsSection">
+
+        <div class="output-card">
+            <div class="card-header">
+                <h3>DM Reply</h3>
+                <button onclick="copyCard('dmReply', this)">Copy</button>
+            </div>
+            <div id="dmReply" class="content"></div>
+        </div>
+
+        <div class="output-card">
+            <div class="card-header">
+                <h3>Follow Up</h3>
+                <button onclick="copyCard('followUp', this)">Copy</button>
+            </div>
+            <div id="followUp" class="content"></div>
+        </div>
+
+        <div class="output-card">
+            <div class="card-header">
+                <h3>Booking Message</h3>
+                <button onclick="copyCard('booking', this)">Copy</button>
+            </div>
+            <div id="booking" class="content"></div>
+        </div>
+
+        <div class="output-card">
+            <div class="card-header">
+                <h3>Objection Handling</h3>
+                <button onclick="copyCard('objection', this)">Copy</button>
+            </div>
+            <div id="objection" class="content"></div>
+        </div>
+
+        <div class="output-card">
+            <div class="card-header">
+                <h3>Call Invitation</h3>
+                <button onclick="copyCard('callInvite', this)">Copy</button>
+            </div>
+            <div id="callInvite" class="content"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+Built with ❤️ using CoachDM AI
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
