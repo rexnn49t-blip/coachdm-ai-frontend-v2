@@ -265,3 +265,119 @@ background:#374151;
 color:white;
 border:none;
 }
+.history-card{
+    background:white;
+    padding:25px;
+    border-radius:24px;
+    margin-top:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.history-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.history-header button{
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.history-item{
+    padding:15px;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+}
+
+.history-item:hover{
+    background:#f8fafc;
+}
+.testimonials{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.testimonial{
+    background:white;
+    max-width:700px;
+    margin:20px auto;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    font-size:18px;
+}
+.pricing{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.price-card{
+    background:white;
+    max-width:400px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+body.dark .testimonial,
+body.dark .price-card,
+body.dark .history-card{
+    background:#1f2937;
+    color:white;
+}
+.testimonials{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.testimonials h2{
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+.testimonial{
+    background:white;
+    max-width:700px;
+    margin:20px auto;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    font-size:18px;
+    line-height:1.6;
+}
+body.dark .testimonial{
+    background:#1f2937;
+    color:white;
+}
+
+.pricing{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.pricing h2{
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+.price-card{
+    background:white;
+    max-width:400px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.price-card h1{
+    font-size:48px;
+    margin:20px 0;
+}
+body.dark .price-card{
+    background:#1f2937;
+    color:white;
+}

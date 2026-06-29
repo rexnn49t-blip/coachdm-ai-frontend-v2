@@ -72,6 +72,10 @@
     Copy All Responses
 </button>
 
+<button class="copy-all-btn" onclick="exportResponses()">
+    Export Responses
+</button>
+
     </div>
 
     <!-- RESULTS -->
@@ -120,10 +124,62 @@
     </div>
 
 </div>
+<div class="history-card">
 
+    <div class="history-header">
+        <h3>Recent Generations</h3>
+
+        <button onclick="clearHistory()">
+            Clear
+        </button>
+    </div>
+
+    <div id="historyList"></div>
+   
+</div>
 <footer>
 Built with ❤️ using CoachDM AI
 </footer>
+
+<section class="testimonials">
+
+    <h2>What Coaches Say</h2>
+
+    <div class="testimonial">
+        "CoachDM AI saves me hours every week."
+    </div>
+
+    <div class="testimonial">
+        "My follow-up messages improved instantly."
+    </div>
+
+    <div class="testimonial">
+        "The objection handling replies are fantastic."
+    </div>
+
+
+<section class="pricing">
+
+    <h2>Pricing</h2>
+
+    <div class="price-card">
+
+        <h3>Starter Plan</h3>
+
+        <h1>$9/month</h1>
+
+        <p>
+            Unlimited AI replies, follow-ups,
+            objection handling and booking messages.
+        </p>
+
+        <button class="generate-btn">
+            Coming Soon
+        </button>
+
+    </div>
+
+</section>
 
 <script src="script.js"></script>
 

@@ -87,7 +87,23 @@ async function generateReply() {
     alert("Error generating response");
 
   }
+const history =
+  JSON.parse(
+    localStorage.getItem("coachHistory")
+  ) || [];
 
+history.unshift({
+  message: message,
+  tone: tone,
+  date: new Date().toLocaleString()
+});
+
+localStorage.setItem(
+  "coachHistory",
+  JSON.stringify(history.slice(0,10))
+);
+
+loadHistory();
   btn.innerText = "Generate AI Response";
   btn.disabled = false;
 }
@@ -196,5 +212,85 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
   }
-
+loadHistory();
 });
+function loadHistory(){
+
+  const history =
+    JSON.parse(
+      localStorage.getItem("coachHistory")
+    ) || [];
+
+  const list =
+    document.getElementById("historyList");
+
+  if(!list) return;
+
+  list.innerHTML = "";
+
+  history.forEach(item => {
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "history-item";
+
+    div.innerHTML =
+      `<strong>${item.date}</strong><br>
+       ${item.message.substring(0,80)}...`;
+
+    list.appendChild(div);
+
+  });
+
+}
+
+function clearHistory(){
+
+  localStorage.removeItem(
+    "coachHistory"
+  );
+
+  loadHistory();
+
+}
+
+function exportResponses() {
+
+  const text =
+`DM Reply:
+${document.getElementById("dmReply").innerText}
+
+Follow Up:
+${document.getElementById("followUp").innerText}
+
+Booking Message:
+${document.getElementById("booking").innerText}
+
+Objection Handling:
+${document.getElementById("objection").innerText}
+
+Call Invitation:
+${document.getElementById("callInvite").innerText}`;
+
+  const blob = new Blob([text], {
+    type: "text/plain"
+  });
+
+  const link =
+    document.createElement("a");
+
+  link.href =
+    URL.createObjectURL(blob);
+
+  link.download =
+    "coachdm-response.txt";
+
+  link.click();
+
+  showNotification(
+    "Responses exported!"
+  );
+
+}
